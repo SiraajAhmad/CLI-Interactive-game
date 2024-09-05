@@ -1,0 +1,79 @@
+{
+  "rooms":[
+  {
+    "id":"driveway",
+    "desc":"You are in the driveway of a property. There are stairs leading up to the front door and a garage to your left. You notice the garage door is open.",
+    "exits":{"up":"lobby", "lobby":"lobby", "upstairs": "lobby", "left" : "garage", "garage": "garage"}
+  },
+  {
+    "id":"lobby",
+    "desc":"You are in a corridor with 2 doors and a staircase, a living room is to your left, a kitchen to your right, and a staircase in front of you with a door at the top of it leading to the bedroom. There are stairs going back down to the driveway.",
+    "exits":{"right":"kitchen","kitchen":"kitchen", "bedroom":"bedroom", "front":"bedroom","up":"bedroom","upstairs": "bedroom", "left":"livingroom","livingroom":"livingroom","living room":"livingroom", "down":"driveway", "driveway" : "driveway", "downstairs":"driveway", "outside": "driveway", "drive": "driveway"}
+  },
+  {
+    "id":"garage",
+    "desc":"There are 2 cars in the garage.",
+    "exits":{"back":"driveway","out":"driveway","outside":"driveway", "drive":"driveway", "driveway":"driveway"}
+  },
+  {
+    "id":"livingroom",
+    "desc":"The fire is burning but nobody seems to be home... There is a single exit back to the lobby.",
+    "exits":{"back": "lobby", "out":"lobby", "lobby": "lobby"}
+  },
+  {
+    "id":"kitchen",
+    "desc":"There are a pile of bones on the worktop... There is a single exit back to the lobby",
+    "exits":{"back":"lobby","out":"lobby","lobby":"lobby"}
+  },
+  {
+    "id":"bedroom",
+    "desc":"This room has no exit other than the door you just came through.",
+    "exits":{"back":"lobby","out":"lobby", "down":"lobby", "downstairs": "lobby", "lobby": "lobby"}
+  }
+  ],
+  "objects":[
+  {
+    "id":"crossbow",
+    "desc":"This is a crossbow. Could be useful for killing zombies. There is no bow in it however.",
+    "initialroom":"garage"
+  },
+  {
+    "id":"arrow",
+    "desc":"an ordinary arrow, useful for killing smaller zombies",
+    "initialroom":"livingroom"
+  },
+  {
+    "id":"gold arrow",
+    "desc":"It is a gold arrow. Could be useful for killing bigger zombies.",
+    "initialroom":"kitchen"
+  },
+  {
+    "id":"bandages",
+    "desc":"Useful for healing and patching yourself up",
+    "initialroom":"kitchen"
+  }
+  ],
+  "enemies":[
+  {
+    "id":"zombie",
+    "desc":"The zombie is relatively small but still dangerous. It is guarding the gold arrow",
+    "aggressiveness":60,
+    "initialroom":"kitchen",
+    "killedby":["crossbow", "arrow"]
+  },
+  {
+    "id":"zombie boss",
+    "desc":"The zombie boss is very large and aggressive. You must kill it to stand any chance of leaving the house alive!",
+    "aggressiveness":99,
+    "initialroom":"bedroom",
+    "killedby":["crossbow", "gold arrow"]
+  }  
+  ],
+  "player":{
+    "initialroom":"driveway"
+  },
+  "objective":{
+    "type":"kill",
+    "what":["zombie boss"]
+  }
+}
